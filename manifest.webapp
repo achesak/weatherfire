@@ -1,5 +1,15 @@
 {
-    "version": "0.1",
     "name": "Weatherfox",
-    "launch_path": "app/index.html"
+    "description": "Keep track of the weather and get information about past trends.",
+    "version": "0.1",
+    "launch_path": "app/index.html",
+    "default_locale": "en",
+    "developer": {
+        "name": "Adam Chesak",
+        "url": "http://poultryandprogramming.wordpress.com/"
+    },
+    "icons": {
+        "60": "app/icons/icon-60px.png",
+        "128": "app/icons/icon-256px.png"
+    }
 }
