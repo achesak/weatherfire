@@ -17,6 +17,25 @@
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
   
+  <script type="text/javascript">
+      $(document).ready(function() {
+          var date = new Date();
+          var d = date.getDate();
+          var m = date.getMonth();
+          var y = date.getFullYear();
+          document.getElementById("dateDay").children[d - 1].selected = true;
+          document.getElementById("dateMonth").children[m].selected = true;
+          var year = document.getElementById("dateYear");
+          for (var i = 0; i < year.children.length; i++) {
+              if (year.children[i].value == year) {
+                  year.children[i].selected = true;
+                  break;
+              }
+          }
+      });
+  </script>
+          
+  
 </head> 
 
 <body> 
@@ -32,16 +51,46 @@
   
   <!-- Main content -->
   <div data-role="content"> 
-  
+    
+    <label for="date">Date: </label>
+    <input type="date" id="date" />
+    
+    <!--
     <label>Date:</label>
     <fieldset data-role="controlgroup" data-type="vertical">
       <label for="dateDay">Day</label>
         <select name="dateDay" id="dateDay">
-          <option value="1">1</option>
-          <!-- etc. -->
-          
-          <!-- FINISHED THIS!! -->
-          
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
         </select>
       <label for="dateMonth">Month</label>
         <select name="dateMonth" id="dateMonth">
@@ -83,9 +132,74 @@
           <option value="2020">2020</option>
         </select>
     </fieldset>
+    -->
     
-    <label>Temperature:</label>
-    <p>Test</p>
+    <label for="temp">Temperature (°C): </label>
+    <input type="number" id="temp" />
+    
+    <label for="prec">Precipitation amount (cm): </label>
+    <input type="number" id="prec" />
+    
+    <label for="precType">Precipitation type: </label>
+    <select id="precType">
+      <option value="none">None</option>
+      <option value="rain">Rain</option>
+      <option value="snow">Snow</option>
+      <option value="hail">Hail</option>
+      <option value="sleet">Sleet</option>
+    </select>
+    
+    <label for="wind">Wind speed (kph): </label>
+    <input type="number" id="wind" />
+    
+    <label for="windDir">Wind direction: </label>
+    <select id="windDir">
+      <option value="none">None</option>
+      <option value="n">N</option>
+      <option value="nne">NNE</option>
+      <option value="ne">NE</option>
+      <option value="ene">ENE</option>
+      <option value="e">E</option>
+      <option value="ese">ESE</option>
+      <option value="se">SE</option>
+      <option value="sse">SSE</option>
+      <option value="s">S</option>
+      <option value="ssw">SSW</option>
+      <option value="sw">SW</option>
+      <option value="wsw">WSW</option>
+      <option value="w">W</option>
+      <option value="wnw">WNW</option>
+      <option value="nw">NW</option>
+      <option value="nnw">NNW</option>
+    </select>
+    
+    <label for="humidity">Humidity (%): </label>
+    <input type="range" id="humidity" min="0.0" max="100.0" step="1" />
+    
+    <label for="airPressure">Air pressure (hPa): </label>
+    <input type="number" id="airPressure" />
+    
+    <label for="airPressureChange">Air pressure change: </label>
+    <select id="airPressureChange">
+      <option value="steady">Steady</option>
+      <option value="rising">Rising</option>
+      <option value="falling">Falling</option>
+    </select>
+    
+    <label for="cloudCover">Cloud cover: </label>
+    <select id="cloudCover">
+      <option value="sunny">Sunny</option>
+      <option value="mostlysunny">Mostly Sunny</option>
+      <option value="partlycloudy">Partly Cloudy</option>
+      <option value="mostlycloudy">Mostly Cloudy</option>
+      <option value="cloudy">Cloudy</option>
+    </select>
+    
+    <br />
+    <div data-role="controlgroup">
+      <a href="#" data-role="button">Add Data</a>
+      <a href="index.html" data-role="button">Cancel</a>
+    </div>
   
   </div>
 
