@@ -122,7 +122,7 @@ var addRow = function() {
     
     // Add the row to the data and save the data.
     data.push(row);
-    dataStorage.setJSON(data);
+    dataStorage.setJSON("weatherData", data);
     
     // Show the success dialog.
     $("#successContent").html("The data for " + date + " has been added!");
