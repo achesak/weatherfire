@@ -46,6 +46,18 @@ Object.defineProperties(Storage2.prototype, {
         return this.storage.getItem(name);
     }, writable: false, enumerable: false, configurable: false},
     
+    /* storage2.has(name)
+     * 
+     * ARGUMENTS:
+     * name - string
+     * 
+     * RETURNS:
+     * true if there is a value associated with name, and false otherwise.
+     */
+    has: { value: function(name) {
+        return this.storage.getItem(name) != null;
+    }, writable: false, enumerable: false, configurable: false},
+    
     /* storage2.remove(name)
      * 
      * ARGUMENTS:
