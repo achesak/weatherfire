@@ -1,6 +1,6 @@
 /* This file defines the function for adding more data. 
  * Depends: jQuery, jQuery Mobile, storage.js, isnumber.js
- * Used on: Add */
+ * Used on: Add screen */
 
 var addRow = function() {
     /* Add a row of data. */
@@ -36,6 +36,9 @@ var addRow = function() {
     
     // Validate the data.
     var errors = "";
+    if (date == "") {
+        errors += "Date is not specified.<br />";
+    }
     if (temp == "") {
         errors += "Temperature is not specified.<br />";
     } else if (temp != "" && !isNumber(temp)) {
@@ -71,12 +74,21 @@ var addRow = function() {
         return;
     }
     
-    // TODO: show a dialog if anything is wrong, and don't continue BUT stay on the current screen.
-    
     // Parse the date into the desired format. Weatherfox uses "dd/mm/yyyy", but Firefox OS inputs date as "yyyy-mm-dd".
-    // TODO: parse the date for iOS devices as well. The format used is "Month Number, Year". Ex: "Jan 1, 2014".
-    var dateSplit = date.split("-");
-    date = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
+    // Parse the date for iOS devices as well. The format used is "Month Number, Year". Ex: "Jan 1, 2014".
+    
+    // Parse for Firefox OS date format:
+    if (date.indexOf("-") != -1) {
+        var dateSplit = date.split("-");
+        date = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
+    // Parse for iOS date format:
+    } else if (/A-Za-z/.test(date)) {
+        var months = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07",
+                      "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"};
+        var dateSplit = date.split(" ");
+        date = dateSplit[1].substring(0, dateSplit[1].length - 1) + "/" + months[dateSplit[0]] + "/" + dateSplit[2];
+    }
+        
     
     // Create the storage object.
     var dataStorage = new Storage2(window.localStorage);
