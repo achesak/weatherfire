@@ -23,6 +23,8 @@ var viewData = function() {
     // If there is data, display it.
     } else {
         
+        $("#listview").empty();
+        
         // Loop through all the data items and add them.
         for (var i = 0; i < data.length; i++ ) {
             
