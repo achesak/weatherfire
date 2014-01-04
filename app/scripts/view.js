@@ -46,7 +46,7 @@ var viewData = function() {
             }
             dataStr += "Humidity (%): " + data[i][4] + "<br />";
             split5 = data[i][5].split(" ");
-            dataStr += "Air pressure (hPa): " + (Math.round(parseFloat(split5[0]) * 100) / 100) + split[1] + "<br />";
+            dataStr += "Air pressure (hPa): " + (Math.round(parseFloat(split5[0]) * 100) / 100) + split5[1] + "<br />";
             dataStr += "Cloud cover: " + data[i][6];
             
             // Add the data string.
