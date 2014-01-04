@@ -16,12 +16,18 @@
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
   <script src="scripts/storage.js"></script>
+  <script src="scripts/isnumber.js"></script>
   <script src="scripts/add.js"></script>
   <script type="text/javascript">
       
       $(document).ready(function() {
           
           $("#addButton").bind("click", addRow);
+          
+          $("#errorButton").bind("click", function() {
+              $("#errorDialog").popup("close");
+          });
+          
       });
           
 
@@ -185,7 +191,7 @@
     </select>
     
     <label for="humidity">Humidity (%): </label>
-    <input type="range" id="humidity" min="0.0" max="100.0" step="1" />
+    <input type="range" id="humidity" min="0.0" max="100.0" step="1" value="0" />
     
     <label for="airPressure">Air pressure (hPa): </label>
     <input type="number" id="airPressure" />
@@ -222,10 +228,24 @@
     </div>
     
     <div data-role="content">
-      <p id="successContent">The data has been added!</p>
+      <p id="successContent">Generic success message.</p>
       <a href="index.html" data-role="button" data-inline="true">Back</a>
     </div>
     
+  </div>
+  
+  <!-- Error dialog -->
+  <div data-role="popup" id="errorDialog">
+    
+    <div data-role="header">
+      <h1>Oh no!</h1>
+    </div>
+    
+    <div data-role="content">
+      <p id="errorContent">Generic error message.</p>
+      <a href="#" id="errorButton" data-role="button" data-inline="true">Close</a>
+    </div>
+  
   </div>
 
 </div>
