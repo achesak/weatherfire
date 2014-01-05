@@ -22,6 +22,25 @@
 
 <!-- Entire page -->
 <div data-role="page">
+    
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/remove.js"></script>
+  <script type="text/javascript">
+      
+      $(document).ready(function() {
+          
+          displayDates();
+          
+          $("#removeButton").bind("click", removeRow);
+          
+          $("#errorButton").bind("click", function() {
+              $("#errorDialog").popup("close");
+          });
+          
+      });
+          
+
+  </script>
 
   <!-- Title bar/header -->
   <div data-role="header" data-position="fixed">
@@ -33,13 +52,44 @@
   <div data-role="content">
     
     <p>Select the date to remove: </p>
-    OPTIONMENU GOES HERE<br />
+    
+    <select id="date">
+    </select>
+    
     <br />
     <div data-role="controlgroup">
-      <a href="#" data-role="button" data-icon="delete">Remove Data</a>
+      <a href="#" data-role="button" data-icon="delete" id="removeButton">Remove Data</a>
       <a href="index.html" data-role="button" data-icon="minus">Cancel</a>
     </div>
     
+  </div>
+  
+  <!-- Success dialog -->
+  <div data-role="popup" id="successDialog">
+    
+    <div data-role="header">
+      <h1>Success!</h1>
+    </div>
+    
+    <div data-role="content">
+      <p id="successContent">Generic success message.</p>
+      <a href="index.html" data-role="button" data-inline="true">Back</a>
+    </div>
+    
+  </div>
+  
+  <!-- Error dialog -->
+  <div data-role="popup" id="errorDialog">
+    
+    <div data-role="header">
+      <h1>Oh no!</h1>
+    </div>
+    
+    <div data-role="content">
+      <p id="errorContent">No date selected!</p>
+      <a href="#" id="errorButton" data-role="button" data-inline="true">Close</a>
+    </div>
+  
   </div>
 
 </div>

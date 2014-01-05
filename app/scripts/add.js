@@ -3,7 +3,7 @@
  * Used on: Add screen */
 
 var addRow = function() {
-    /* Add a row of data. */
+    /* Adds a row of data. */
     
     // Get all the values.
     var date = $("#date").val();
