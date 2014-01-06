@@ -13,13 +13,19 @@ var viewData = function() {
         var data = [];
     } else {
         var data = dataStorage.getJSON("weatherData");
-    }        
+    }       
+    
+    // Make sure the no data message is shown by default (I hate this shit).
+    $("#nodata").show(); 
     
     // Clear any existing data. (Is this step necessary?)
     $("#listview").empty();
         
     // Loop through all the data items and add them.
     for (var i = 0; i < data.length; i++ ) {
+        
+        // Hide the no data message.
+        $("#nodata").hide();
         
         // Create the new item.
         var item = $("<li/>").append($("<h3/>", {text: data[i][0]}));
