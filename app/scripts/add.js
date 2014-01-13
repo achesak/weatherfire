@@ -17,6 +17,16 @@ var addRow = function() {
     var airPressureChange = $("#airPressureChange").val();
     var cloudCover = $("#cloudCover").val();
     
+    // Create the storage object.
+    var dataStorage = new Storage2(window.localStorage);
+    
+    // Get the current data as JSON, or create a new set of data if it doesn't already exist.
+    if (!dataStorage.has("weatherData")) {
+        var data = [];
+    } else {
+        var data = dataStorage.getJSON("weatherData");
+    }
+    
     // Strip any excess whitespace.
     temp = temp.toString().trim();
     prec = prec.toString().trim();
@@ -33,6 +43,39 @@ var addRow = function() {
     if (!isNumber(humidity)) {
         humidity = "0";
     }
+    
+    // Parse the date into the desired format. Weatherfox uses "dd/mm/yyyy", but Firefox OS inputs date as "yyyy-mm-dd".
+    // Parse the date for iOS devices as well. The format used is "Month Number, Year". Ex: "Jan 1, 2014".
+    
+    // Parse for Firefox OS date format:
+    if (date.indexOf("-") != -1) {
+        var dateSplit = date.split("-");
+        date = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
+    // Parse for iOS date format:
+    } else if (/A-Za-z/.test(date)) {
+        var months = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07",
+                      "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"};
+        var dateSplit = date.split(" ");
+        date = dateSplit[1].substring(0, dateSplit[1].length - 1) + "/" + months[dateSplit[0]] + "/" + dateSplit[2];
+    }
+    
+    // If the date has already been entered, don't accept another one.
+    var dateUsed = false;
+    for (var i = 0; i < data.length; i++) {
+        if (data[i][0] == date) {
+            dateUsed = true;
+            break;
+        }
+    }
+    
+    // Show an error message, if needed.
+    if (dateUsed) {
+        
+        // Show the error dialog.
+        $("#errorContent").html("The date " + date + " has already been entered!");
+        $("#errorDialog").popup().trigger("create").popup("open");
+        return;
+    }        
     
     // Validate the data.
     var errors = "";
@@ -72,32 +115,6 @@ var addRow = function() {
         $("#errorContent").html(errors);
         $("#errorDialog").popup().trigger("create").popup("open");
         return;
-    }
-    
-    // Parse the date into the desired format. Weatherfox uses "dd/mm/yyyy", but Firefox OS inputs date as "yyyy-mm-dd".
-    // Parse the date for iOS devices as well. The format used is "Month Number, Year". Ex: "Jan 1, 2014".
-    
-    // Parse for Firefox OS date format:
-    if (date.indexOf("-") != -1) {
-        var dateSplit = date.split("-");
-        date = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
-    // Parse for iOS date format:
-    } else if (/A-Za-z/.test(date)) {
-        var months = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07",
-                      "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"};
-        var dateSplit = date.split(" ");
-        date = dateSplit[1].substring(0, dateSplit[1].length - 1) + "/" + months[dateSplit[0]] + "/" + dateSplit[2];
-    }
-        
-    
-    // Create the storage object.
-    var dataStorage = new Storage2(window.localStorage);
-    
-    // Get the current data as JSON, or create a new set of data if it doesn't already exist.
-    if (!dataStorage.has("weatherData")) {
-        var data = [];
-    } else {
-        var data = dataStorage.getJSON("weatherData");
     }
     
     // Create the new array.
