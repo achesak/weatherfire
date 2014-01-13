@@ -137,8 +137,19 @@ var addRow = function() {
     row[5] = airPressure + " " + airPressureChange;
     row[6] = cloudCover;
     
-    // Add the row to the data and save the data.
+    // Add the row to the data.
     data.push(row);
+    
+    // Sort the data.
+    data.sort(function(a, b) {
+        var aSplit = a[0].split("/");
+        var bSplit = b[0].split("/");
+        var a2 = new Date(aSplit[2], aSplit[1], aSplit[0]);
+        var b2 = new Date(bSplit[2], bSplit[1], bSplit[0]);
+        return a2 > b2 ? -1 : a2 < b2 ? 1 : 0;
+    });
+    
+    // Save the data.
     dataStorage.setJSON("weatherData", data);
     
     // Show the success dialog.
