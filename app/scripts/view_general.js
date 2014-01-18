@@ -1,34 +1,34 @@
 /* This file defines the function for displaying the general info.
- * Depends: jQuery, jQuery Mobile, storage.js, utility.js, info.js
+ * Depends: jQuery, jQuery Mobile, storage.js, utility.js, info.js, general.js
  * Used on: general info */
 
 var viewGeneral = function() {
     /* Displays the info. */
     
+    // Create the storage object.
+    var dataStorage = new Storage2(window.localStorage);
     
-    // ----------------------------------------
-    // VERY VERY INCOMPLETE!!
-    // ----------------------------------------
+    // Get the current data as JSON, or create a new set of data if it doesn't already exist.
+    if (!dataStorage.has("weatherData")) {
+        var data = [];
+    } else {
+        var data = dataStorage.getJSON("weatherData");
+    }
     
-    var data = [
-        ["First day", "???"],
-        ["Last day", "???"],
-        ["Number of days", "???"],
-        ["Range of days", "???"],
-        ["Lowest temperature", "???"],
-        ["Highest temperature", "???"],
-        ["Average temperature", "???"],
-        ["Lowest precipitation", "???"],
-        ["Highest precipitation", "???"],
-        ["Average precipitation", "???"],
-        ["Lowest wind speed", "???"],
-        ["Highest wind speed", "???"],
-        ["Average wind speed", "???"],
-        ["Lowest air pressure", "???"],
-        ["Highest air pressure", "???"],
-        ["Average air pressure", "???"],
-        ["Most common cloud cover", "???"]
-    ];
+    // If there is no data, don't continue.
+    if (data.length == 0) {
+        
+        // Make sure the no data message is shown.
+        $("#nodataGeneral").show();
+    
+        // Clear any existing data. (Is this step necessary?)
+        $("#generalInfo").empty();
+        
+        return;
+    }
+    
+    // Get the info.
+    var dataCalc = infoGeneral(data);
     
     // Make sure the no data message is shown by default (I hate this shit).
     $("#nodataGeneral").show();
@@ -37,14 +37,14 @@ var viewGeneral = function() {
     $("#generalInfo").empty();
     
     // Loop through all the data items and add them.
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < dataCalc.length; i++) {
         
         // Hide the no data message.
         $("#nodataGeneral").hide();
         
         // Create the new item.
-        var item = $("<li/>").append($("<h3/>", {text: data[i][0]}));
-        var para = $("<p/>").append(data[i][1]).css("padding-left", "20px");
+        var item = $("<li/>").append($("<h3/>", {text: dataCalc[i][0]}));
+        var para = $("<p/>").append(dataCalc[i][1]).css("padding-left", "30px");
         
         // Append the data.
         item.append(para);

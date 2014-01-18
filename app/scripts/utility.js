@@ -113,7 +113,7 @@ noneToZero: function(data) {
     for (var i = 0; i < data.length; i++) {
         
         // If the value is "None", change it to "0".
-        if (i == "None") {
+        if (data[i] == "None") {
             list.push("0");
         } else {
         // Otherwise, append it as is.
