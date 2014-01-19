@@ -26,7 +26,7 @@ var infoGeneral = function(data) {
     var tempData = Utility.convertFloat(Utility.getColumn(data, 1));
     dataCalc.push(["Lowest temperature", Math.min.apply(Math, tempData) + " °C"]);
     dataCalc.push(["Highest temperature", Math.max.apply(Math, tempData) + " °C"]);
-    dataCalc.push(["Average temperature", Info.mean(tempData) + " °C"]);    
+    dataCalc.push(["Average temperature", Info.mean(tempData) + " °C"]);
     
     // Get the precipitation data.
     var precData = Utility.splitList(Utility.getColumn(data, 2));
