@@ -1,8 +1,8 @@
-/* This file defines the function for displaying the humidity info.
- * Depends: jQuery, jQuery Mobile, storage.js, utility.js, info.js, humidity.js
- * Used on: humidity info */
+/* This file defines the function for displaying the cloud cover info.
+ * Depends: jQuery, jQuery Mobile, storage.js, utility.js, info.js, cloudcover.js
+ * Used on: cloud cover info */
 
-var viewHumi = function() {
+var viewClou = function() {
     /* Displays the info. */
     
     // Create the storage object.
@@ -19,28 +19,28 @@ var viewHumi = function() {
     if (data.length == 0) {
         
         // Make sure the no data message is shown.
-        $("#nodataHumi").show();
+        $("#nodataClou").show();
     
         // Clear any existing data. (Is this step necessary?)
-        $("#humiInfo").empty();
+        $("#clouInfo").empty();
         
         return;
     }
     
     // Get the info.
-    var dataCalc = infoHumi(data);
+    var dataCalc = infoClou(data);
     
     // Make sure the no data message is shown by default (I hate this shit).
-    $("#nodataHumi").show();
+    $("#nodataClou").show();
     
     // Clear any existing data. (Is this step necessary?)
-    $("#humiInfo").empty();
+    $("#clouInfo").empty();
     
     // Loop through all the data items and add them.
     for (var i = 0; i < dataCalc.length; i++) {
         
         // Hide the no data message.
-        $("#nodataHumi").hide();
+        $("#nodataClou").hide();
         
         // Create the new item.
         var item = $("<li/>").append($("<h3/>", {text: dataCalc[i][0]}));
@@ -49,8 +49,8 @@ var viewHumi = function() {
         // Append the data.
         item.append(para);
         // Insert the data.
-        $("#humiInfo").append(item);
-        $("#humiInfo").listview("refresh");
+        $("#clouInfo").append(item);
+        $("#clouInfo").listview("refresh");
     }
         
 };

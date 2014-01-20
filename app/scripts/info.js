@@ -39,7 +39,7 @@ range: function(numbers) {
     /* Finds the range of a list of numbers. */
     
     // Calculate the range.
-    return Math.max(numebers) - Math.min(numbers);
+    return Math.max.apply(Math, numbers) - Math.min.apply(Math, numbers);
 },
 
 /* Based off Matthew Flaschen's answer on a Stack Overflow post:
@@ -63,6 +63,21 @@ mode: function(array) {
     	}
     }
     return maxEl;
+},
+
+/* Based off typeof's answer on a Stack Overflow post:
+ * http://stackoverflow.com/a/5668029 */
+occur: function(array) {
+    /* Finds the number of each item in an array. */
+    
+    var counts = {};
+
+    for (var i = 0; i < array.length; i++) {
+        var num = array[i];
+        counts[num] = counts[num] ? counts[num]+1 : 1;
+    }
+    
+    return counts;
 }
 
 };

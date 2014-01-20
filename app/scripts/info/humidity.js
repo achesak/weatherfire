@@ -13,6 +13,8 @@ var infoHumi = function(data) {
     dataCalc.push(["Lowest humidity", Math.min.apply(Math, humiData) + "%"]);
     dataCalc.push(["Highest humidity", Math.max.apply(Math, humiData) + "%"]);
     dataCalc.push(["Average humidity", Info.mean(humiData) + "%"]);
+    dataCalc.push(["Median humidity", Info.median(humiData) + "%"]);
+    dataCalc.push(["Range of humidity", Info.range(humiData) + "%"]);
     dataCalc.push(["Most common humidity", Info.mode(humiData) + "%"]);
     
     // Return the calculated data.

@@ -13,6 +13,8 @@ var infoTemp = function(data) {
     dataCalc.push(["Lowest temperature", Math.min.apply(Math, tempData) + " °C"]);
     dataCalc.push(["Highest temperature", Math.max.apply(Math, tempData) + " °C"]);
     dataCalc.push(["Average temperature", Info.mean(tempData) + " °C"]);
+    dataCalc.push(["Median temperature", Info.median(tempData) + " °C"]);
+    dataCalc.push(["Range of temperatures", Info.range(tempData) + " °C"]);
     dataCalc.push(["Most common temperature", Info.mode(tempData) + " °C"]);
     
     // Return the calculated data.

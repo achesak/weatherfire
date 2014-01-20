@@ -22,6 +22,18 @@
 
 <!-- Entire page -->
 <div data-role="page">
+    
+  <script src="../scripts/storage.js"></script>
+  <script src="../scripts/info.js"></script>
+  <script src="../scripts/utility.js"></script>
+  <script src="../scripts/info/cloudcover.js"></script>
+  <script src="../scripts/view_cloudcover.js"></script>
+  <script type="text/javascript">
+      
+      $("#generalInfo").trigger("create");
+      $(document).on("pagebeforeshow", viewClou);
+      
+  </script>
 
   <!-- Title bar/header -->
   <div data-role="header" data-position="fixed">
@@ -31,6 +43,16 @@
   
   <!-- Main content -->
   <div data-role="content"> 
+    
+    <div id="nodataClou">
+      <h3>There's nothing here!</h3>
+      <p>Add some data to get started.</p>
+    </div>
+    
+    <ul data-role="listview" id="clouInfo">
+      
+    </ul>
+    
   </div>
 
 </div>

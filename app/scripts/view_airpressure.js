@@ -1,8 +1,8 @@
-/* This file defines the function for displaying the humidity info.
- * Depends: jQuery, jQuery Mobile, storage.js, utility.js, info.js, humidity.js
+/* This file defines the function for displaying the air pressure info.
+ * Depends: jQuery, jQuery Mobile, storage.js, utility.js, info.js, airpressure.js
  * Used on: humidity info */
 
-var viewHumi = function() {
+var viewAirp = function() {
     /* Displays the info. */
     
     // Create the storage object.
@@ -19,28 +19,28 @@ var viewHumi = function() {
     if (data.length == 0) {
         
         // Make sure the no data message is shown.
-        $("#nodataHumi").show();
+        $("#nodataAirp").show();
     
         // Clear any existing data. (Is this step necessary?)
-        $("#humiInfo").empty();
+        $("#airpInfo").empty();
         
         return;
     }
     
     // Get the info.
-    var dataCalc = infoHumi(data);
+    var dataCalc = infoAirp(data);
     
     // Make sure the no data message is shown by default (I hate this shit).
-    $("#nodataHumi").show();
+    $("#nodataAirp").show();
     
     // Clear any existing data. (Is this step necessary?)
-    $("#humiInfo").empty();
+    $("#airpInfo").empty();
     
     // Loop through all the data items and add them.
     for (var i = 0; i < dataCalc.length; i++) {
         
         // Hide the no data message.
-        $("#nodataHumi").hide();
+        $("#nodataAirp").hide();
         
         // Create the new item.
         var item = $("<li/>").append($("<h3/>", {text: dataCalc[i][0]}));
@@ -49,8 +49,8 @@ var viewHumi = function() {
         // Append the data.
         item.append(para);
         // Insert the data.
-        $("#humiInfo").append(item);
-        $("#humiInfo").listview("refresh");
+        $("#airpInfo").append(item);
+        $("#airpInfo").listview("refresh");
     }
         
 };
