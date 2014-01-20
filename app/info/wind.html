@@ -10,7 +10,7 @@
   
   <title>Wind</title> 
   <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1.0">
+  <meta name="viewport" content="initial-scale=1.0" />
   
   <link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -22,6 +22,18 @@
 
 <!-- Entire page -->
 <div data-role="page">
+    
+  <script src="../scripts/storage.js"></script>
+  <script src="../scripts/info.js"></script>
+  <script src="../scripts/utility.js"></script>
+  <script src="../scripts/info/wind.js"></script>
+  <script src="../scripts/view_wind.js"></script>
+  <script type="text/javascript">
+      
+      $("#generalInfo").trigger("create");
+      $(document).on("pagebeforeshow", viewWind);
+      
+  </script>
 
   <!-- Title bar/header -->
   <div data-role="header" data-position="fixed">
@@ -31,6 +43,16 @@
   
   <!-- Main content -->
   <div data-role="content"> 
+    
+    <div id="nodataWind">
+      <h3>There's nothing here!</h3>
+      <p>Add some data to get started.</p>
+    </div>
+    
+    <ul data-role="listview" id="windInfo">
+      
+    </ul>
+    
   </div>
 
 </div>
