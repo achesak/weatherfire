@@ -152,9 +152,8 @@ var addRow = function() {
     // Save the data.
     dataStorage.setJSON("weatherData", data);
     
-    // Show the success dialog.
-    $("#successContent").html("The data for " + date + " has been added!");
-    $("#successDialog").popup().trigger("create").popup("open");
+    // Go back to the main page.
+    $.mobile.navigate("index.html");
 
 };
     
