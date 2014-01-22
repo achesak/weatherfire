@@ -10,12 +10,12 @@ var infoTemp = function(data) {
     
     // Get the temperature data.
     var tempData = Utility.convertFloat(Utility.getColumn(data, 1));
-    dataCalc.push(["Lowest temperature", Math.min.apply(Math, tempData) + " °C"]);
-    dataCalc.push(["Highest temperature", Math.max.apply(Math, tempData) + " °C"]);
-    dataCalc.push(["Average temperature", Info.mean(tempData) + " °C"]);
-    dataCalc.push(["Median temperature", Info.median(tempData) + " °C"]);
-    dataCalc.push(["Range of temperatures", Info.range(tempData) + " °C"]);
-    dataCalc.push(["Most common temperature", Info.mode(tempData) + " °C"]);
+    dataCalc.push(["Lowest temperature", Utility.round(Math.min.apply(Math, tempData)) + " °C"]);
+    dataCalc.push(["Highest temperature", Utility.round(Math.max.apply(Math, tempData)) + " °C"]);
+    dataCalc.push(["Average temperature", Utility.round(Info.mean(tempData)) + " °C"]);
+    dataCalc.push(["Median temperature", Utility.round(Info.median(tempData)) + " °C"]);
+    dataCalc.push(["Range of temperatures", Utility.round(Info.range(tempData)) + " °C"]);
+    dataCalc.push(["Most common temperature", Utility.round(Info.mode(tempData)) + " °C"]);
     
     // Return the calculated data.
     return dataCalc;

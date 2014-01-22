@@ -123,6 +123,12 @@ noneToZero: function(data) {
     
     // Return the new list.
     return list;
+},
+
+round: function(number) {
+    /* If a value is decimal, rounds it to two decimal places at the most. */
+    
+    return Math.round(number * Math.pow(10, 2)) / Math.pow(10, 2);
 }
 
 }

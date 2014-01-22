@@ -11,12 +11,12 @@ var infoAirp = function(data) {
     // Get the humidity data.
     var airpData = Utility.splitList(Utility.getColumn(data, 5));
     var airpData1 = Utility.convertFloat(airpData[0]);
-    dataCalc.push(["Lowest air pressure", Math.min.apply(Math, airpData1) + " hPa"]);
-    dataCalc.push(["Highest air pressure", Math.max.apply(Math, airpData1) + " hPa"]);
-    dataCalc.push(["Average air pressure", Info.mean(airpData1) + " hPa"]);
-    dataCalc.push(["Median air pressure", Info.median(airpData1) + " hPa"]);
-    dataCalc.push(["Range of air pressures", Info.range(airpData1) + " hPa"]);
-    dataCalc.push(["Most common air pressure", Info.mode(airpData1) + " hPa"]);
+    dataCalc.push(["Lowest air pressure", Utility.round(Math.min.apply(Math, airpData1)) + " hPa"]);
+    dataCalc.push(["Highest air pressure", Utility.round(Math.max.apply(Math, airpData1)) + " hPa"]);
+    dataCalc.push(["Average air pressure", Utility.round(Info.mean(airpData1)) + " hPa"]);
+    dataCalc.push(["Median air pressure", Utility.round(Info.median(airpData1)) + " hPa"]);
+    dataCalc.push(["Range of air pressures", Utility.round(Info.range(airpData1)) + " hPa"]);
+    dataCalc.push(["Most common air pressure", Utility.round(Info.mode(airpData1)) + " hPa"]);
     var airpTypes = Info.occur(airpData[1]);
     dataCalc.push(["Days of steady air pressure", (airpTypes.hasOwnProperty("Steady") ? airpTypes["Steady"] : 0) + " days"]);
     dataCalc.push(["Days of rising air pressure", (airpTypes.hasOwnProperty("Rising") ? airpTypes["Rising"] : 0) + " days"]);

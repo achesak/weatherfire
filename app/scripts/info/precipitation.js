@@ -15,11 +15,11 @@ var infoPrec = function(data) {
     if (precData1.length == 0) {
         precData1.push(0);
     }
-    dataCalc.push(["Lowest precipitation", Math.min.apply(Math, precData1) + " cm"]);
-    dataCalc.push(["Highest precipitation", Math.max.apply(Math, precData1) + " cm"]);
-    dataCalc.push(["Average precipitation", Info.mean(precData1) + " cm"]);
-    dataCalc.push(["Median precipitation", Info.median(precData1) + " cm"]);
-    dataCalc.push(["Range of precipitation", Info.range(precData1) + " cm"]);
+    dataCalc.push(["Lowest precipitation", Utility.round(Math.min.apply(Math, precData1)) + " cm"]);
+    dataCalc.push(["Highest precipitation", Utility.round(Math.max.apply(Math, precData1)) + " cm"]);
+    dataCalc.push(["Average precipitation", Utility.round(Info.mean(precData1)) + " cm"]);
+    dataCalc.push(["Median precipitation", Utility.round(Info.median(precData1)) + " cm"]);
+    dataCalc.push(["Range of precipitation", Utility.round(Info.range(precData1)) + " cm"]);
     
     var total = 0;
     var rain = 0;
@@ -53,11 +53,11 @@ var infoPrec = function(data) {
         }
     }
     
-    dataCalc.push(["Total precipitation", total + " cm"]);
-    dataCalc.push(["Total amount of rain", rain + " cm"]);
-    dataCalc.push(["Total amount of snow", snow + " cm"]);
-    dataCalc.push(["Total amount of hail", hail + " cm"]);
-    dataCalc.push(["Total amount of sleet", sleet + " cm"]);
+    dataCalc.push(["Total precipitation", Utility.round(total) + " cm"]);
+    dataCalc.push(["Total amount of rain", Utility.round(rain) + " cm"]);
+    dataCalc.push(["Total amount of snow", Utility.round(snow) + " cm"]);
+    dataCalc.push(["Total amount of hail", Utility.round(hail) + " cm"]);
+    dataCalc.push(["Total amount of sleet", Utility.round(sleet) + " cm"]);
     dataCalc.push(["Days with no precipitation", dNone + " days"]);
     dataCalc.push(["Days with rain", dRain + " days"]);
     dataCalc.push(["Days with snow", dSnow + " days"]);
