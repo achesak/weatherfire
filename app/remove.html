@@ -29,13 +29,25 @@
       
       $(document).ready(function() {
           
-          displayDates();
-          
-          $("#removeButton").bind("click", removeRow);
-          
-          $("#errorButton").bind("click", function() {
-              $("#errorDialog").popup("close");
-          });
+          // Create the storage object.
+          var dataStorage = new Storage2(window.localStorage);
+    
+          // If there is no data, don't display the dates.
+          if (!dataStorage.has("weatherData") || dataStorage.getJSON("weatherData").length == 0) {
+              $("#removeMain").hide();
+              $("#removeNone").show();
+          } else {
+              $("#removeMain").show();
+              $("#removeNone").hide();
+              
+              displayDates();
+              
+              $("#removeButton").bind("click", removeRow);
+              
+              $("#errorButton").bind("click", function() {
+                  $("#errorDialog").popup("close");
+              });
+          }
           
       });
           
@@ -51,15 +63,22 @@
   <!-- Main content -->
   <div data-role="content">
     
-    <p>Select the date to remove: </p>
+    <div id="removeMain">
+      <p>Select the date to remove: </p>
+      
+      <select id="date">
+      </select>
+      
+      <br />
+      <div data-role="controlgroup">
+        <a href="#" data-role="button" data-icon="delete" id="removeButton">Remove Data</a>
+        <a href="index.html" data-role="button" data-icon="minus">Cancel</a>
+      </div>
+    </div>
     
-    <select id="date">
-    </select>
-    
-    <br />
-    <div data-role="controlgroup">
-      <a href="#" data-role="button" data-icon="delete" id="removeButton">Remove Data</a>
-      <a href="index.html" data-role="button" data-icon="minus">Cancel</a>
+    <div id="removeNone">
+      <h3>There's nothing here!</h3>
+      <p>You'll need to add some data before you can remove anything!</p>
     </div>
     
   </div>
