@@ -1,5 +1,5 @@
 /* This file defines the function for displaying all the data.
- * Depends: jQuery, jQuery Mobile, storage.js
+ * Depends: jQuery, jQuery Mobile, storage.js, options.js
  * Used on: main screen */
 
 var viewData = function() {
@@ -13,7 +13,23 @@ var viewData = function() {
         var data = [];
     } else {
         var data = dataStorage.getJSON("weatherData");
-    }       
+    }
+    
+    // Get the options.
+    var options = getOptions();
+    
+    // Set the units.
+    if (options.units == "metric") {
+        var units = {"temp": "°C",
+                     "prec": "cm",
+                     "wind": "kph",
+                     "airp": "hPa"};
+    } else {
+        var units = {"temp": "°F",
+                     "prec": "in",
+                     "wind": "mph",
+                     "airp": "mbar"};
+    }
     
     // Make sure the no data message is shown by default (I hate this shit).
     $("#nodata").show(); 
@@ -32,22 +48,22 @@ var viewData = function() {
         var para = $("<p/>");
         
         // Create the data string.
-        var dataStr = "Temperature: " + (Math.round(parseFloat(data[i][1]) * 100) / 100) + " °C<br />";
+        var dataStr = "Temperature: " + (Math.round(parseFloat(data[i][1]) * 100) / 100) + " " + units["temp"] + "<br />";
         if (data[i][2] == "None") {
             dataStr += "Precipitation: None<br />";
         } else {
             split2 = data[i][2].split(" ");
-            dataStr += "Precipitation: " + (Math.round(parseFloat(split2[0]) * 100) / 100) + " cm of " + split2[1] + "<br />";
+            dataStr += "Precipitation: " + (Math.round(parseFloat(split2[0]) * 100) / 100) + " " + units["prec"] + " of " + split2[1] + "<br />";
         }
         if (data[i][3] == "None") {
             dataStr += "Wind: None<br />";
         } else {
             split3 = data[i][3].split(" ");
-            dataStr += "Wind: " + (Math.round(parseFloat(split3[0]) * 100) / 100) + " kph " + split3[1] + "<br />";
+            dataStr += "Wind: " + (Math.round(parseFloat(split3[0]) * 100) / 100) + " " + units["wind"] + " " + split3[1] + "<br />";
         }
         dataStr += "Humidity: " + data[i][4] + "%<br />";
         split5 = data[i][5].split(" ");
-        dataStr += "Air pressure: " + (Math.round(parseFloat(split5[0]) * 100) / 100) + " hPa " + split5[1] + "<br />";
+        dataStr += "Air pressure: " + (Math.round(parseFloat(split5[0]) * 100) / 100) + " " + units["airp"] + " " + split5[1] + "<br />";
         dataStr += "Cloud cover: " + data[i][6];
         
         // Add the data string.

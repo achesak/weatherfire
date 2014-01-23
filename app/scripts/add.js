@@ -157,3 +157,28 @@ var addRow = function() {
 
 };
     
+var updateUnits = function() {
+    /* Updates the units used in the labels. */
+    
+    // Get the options.
+    var options = getOptions();
+    
+    // Set the units.
+    if (options.units == "metric") {
+        var units = {"temp": "°C",
+                     "prec": "cm",
+                     "wind": "kph",
+                     "airp": "hPa"};
+    } else {
+        var units = {"temp": "°F",
+                     "prec": "in",
+                     "wind": "mph",
+                     "airp": "mbar"};
+    }
+    
+    // Set the new labels.
+    $("#tempLbl").html("Temperature (" + units["temp"] + "): ");
+    $("#precLbl").html("Precipitation amount (" + units["prec"] + "): ");
+    $("#windLbl").html("Wind speed (" + units["wind"] + "): ");
+    $("#airpLbl").html("Air pressure (" + units["airp"] + "): ");
+};
