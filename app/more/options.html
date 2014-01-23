@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<!-- Weatherfire
+     Options UI file
+-->
+
+
+<html lang="en"> 
+<head> 
+  
+  <title>Options</title> 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0" />
+  
+  <link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+  
+</head> 
+
+<body> 
+
+<!-- Entire page -->
+<div data-role="page">
+    
+  <script src="../scripts/storage.js"></script>
+  <script src="../scripts/options.js"></script>
+  <script type="text/javascript">
+    
+    $(document).ready(function() {
+        
+        displayOptions();
+        
+        $("#saveButton").bind("click", saveOptions);
+        
+    });
+    
+  </script>
+
+  <!-- Title bar/header -->
+  <div data-role="header" data-position="fixed">
+      <a href="../more.html" data-role="button">Back</a>
+    <h1>Options</h1>
+  </div>
+  
+  <!-- Main content -->
+  <div data-role="content">
+    
+    <div data-role="fieldcontain">
+      <fieldset data-role="controlgroup" id="units" data-type="horizontal">
+        <legend>Units:</legend>
+        <input type="radio" id="unitMetric" name="unitMetric" value="metric" />
+        <label for="unitMetric">Metric</label>
+        <input type="radio" id="unitImperial" name="unitMetric" value="imperial" />
+        <label for="unitImperial">Imperial</label>
+      </fieldset>
+    </div>
+    
+    <br />
+    <div data-role="controlgroup">
+      <a href="#" data-role="button" data-icon="check" id="saveButton">Save Options</a>
+      <a href="../more.html" data-role="button" data-icon="minus">Cancel</a>
+    </div>
+    
+  </div>
+  
+  <!-- Success dialog -->
+  <div data-role="popup" id="successDialogOptions">
+    
+    <div data-role="header">
+      <h1>Success!</h1>
+    </div>
+    
+    <div data-role="content">
+      <p id="successContentOptions">The options have been saved!</p>
+      <a href="../index.html" data-role="button" data-inline="true">Back</a>
+    </div>
+    
+  </div>
+
+</div>
+
+</body>
+</html>
+

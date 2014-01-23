@@ -32,22 +32,22 @@ var viewData = function() {
         var para = $("<p/>");
         
         // Create the data string.
-        var dataStr = "Temperature (°C): " + (Math.round(parseFloat(data[i][1]) * 100) / 100) + "<br />";
+        var dataStr = "Temperature: " + (Math.round(parseFloat(data[i][1]) * 100) / 100) + " °C<br />";
         if (data[i][2] == "None") {
-            dataStr += "Precipitation (cm): None<br />";
+            dataStr += "Precipitation: None<br />";
         } else {
             split2 = data[i][2].split(" ");
-            dataStr += "Precipitation (cm): " + (Math.round(parseFloat(split2[0]) * 100) / 100) + " " + split2[1] + "<br />";
+            dataStr += "Precipitation: " + (Math.round(parseFloat(split2[0]) * 100) / 100) + " cm of " + split2[1] + "<br />";
         }
         if (data[i][3] == "None") {
-            dataStr += "Wind (kph): None<br />";
+            dataStr += "Wind: None<br />";
         } else {
             split3 = data[i][3].split(" ");
-            dataStr += "Wind (kph): " + (Math.round(parseFloat(split3[0]) * 100) / 100) + " " + split3[1] + "<br />";
+            dataStr += "Wind: " + (Math.round(parseFloat(split3[0]) * 100) / 100) + " kph " + split3[1] + "<br />";
         }
-        dataStr += "Humidity (%): " + data[i][4] + "<br />";
+        dataStr += "Humidity: " + data[i][4] + "%<br />";
         split5 = data[i][5].split(" ");
-        dataStr += "Air pressure (hPa): " + (Math.round(parseFloat(split5[0]) * 100) / 100) + " " + split5[1] + "<br />";
+        dataStr += "Air pressure: " + (Math.round(parseFloat(split5[0]) * 100) / 100) + " hPa " + split5[1] + "<br />";
         dataStr += "Cloud cover: " + data[i][6];
         
         // Add the data string.
