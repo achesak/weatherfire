@@ -2,7 +2,7 @@
     "name": "Weatherfire",
     "description": "Keep track of the weather and get information about past trends.",
     "version": "0.1",
-    "launch_path": "app/index.html",
+    "launch_path": "/app/index.html",
     "default_locale": "en",
     "developer": {
         "name": "Adam Chesak",
