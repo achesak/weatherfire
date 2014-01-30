@@ -10,6 +10,7 @@
     },
     "icons": {
         "60": "/app/icons/icon-60px.png",
+        "90": "/app/icons/icon-90px.png",
         "128": "/app/icons/icon-256px.png"
     }
 }
