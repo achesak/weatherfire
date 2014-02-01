@@ -9,9 +9,10 @@
         "url": "http://poultryandprogramming.wordpress.com/"
     },
     "icons": {
+        "32": "/app/icons/icon-32px.png",
         "60": "/app/icons/icon-60px.png",
         "90": "/app/icons/icon-90px.png",
         "120": "/app/icons/icon-120px.png",
-        "128": "/app/icons/icon-256px.png"
+        "128": "/app/icons/icon-128px.png"
     }
 }
